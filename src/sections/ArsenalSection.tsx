@@ -3,13 +3,12 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
 
-const PRODUCT_URL = process.env.NEXT_PUBLIC_PRODUCT_URL || "https://ybuenterprise.com";
+const PRODUCT_URL = "/product";
 
 const modules = [
-    { name: "HSE Plan V2", status: "Production Ready", href: `${PRODUCT_URL}/#solutions` },
-    { name: "Personnel Readiness", status: "Production Ready", href: `${PRODUCT_URL}/#solutions` },
-    { name: "CSMS Digital Portal", status: "Production Ready", href: `${PRODUCT_URL}/#solutions` },
-    { name: "EcoCompliant-OS", status: "Production Ready", href: `${PRODUCT_URL}/#solutions` },
+    { name: "HSE Plan V2", status: "Production Ready", href: `${PRODUCT_URL}#solutions` },
+    { name: "CSMS Portal", status: "Production Ready", href: `${PRODUCT_URL}#solutions` },
+    { name: "EcoCompliant-OS", status: "Production Ready", href: `${PRODUCT_URL}#solutions` },
 ];
 
 const techBadges = [
