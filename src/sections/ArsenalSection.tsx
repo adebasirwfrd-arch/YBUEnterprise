@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
 
-const PRODUCT_URL = "/product";
+const PRODUCT_URL = "https://basir-enterpise.vercel.app/";
 
 const modules = [
     { name: "HSE Plan V2", status: "Production Ready", href: `${PRODUCT_URL}#solutions` },
@@ -115,7 +115,7 @@ export default function ArsenalSection() {
 
                             {/* Mockup frame */}
                             <motion.a
-                                href={`${PRODUCT_URL}/#solutions`}
+                                href={`${PRODUCT_URL}#solutions`}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 whileHover={{ scale: 1.01 }}
