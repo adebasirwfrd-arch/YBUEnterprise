@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
 
-const PRODUCT_URL = process.env.NEXT_PUBLIC_PRODUCT_URL || "http://localhost:3000";
+const PRODUCT_URL = process.env.NEXT_PUBLIC_PRODUCT_URL || "https://ybuenterprise.com";
 
 const modules = [
     { name: "HSE Plan V2", status: "Production Ready", href: `${PRODUCT_URL}/#solutions` },
