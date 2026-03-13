@@ -28,6 +28,20 @@ const problemIcons = [
             <path d="M12 36l4-4M28 36l-4-4" stroke="#ff4444" strokeWidth="1.5" strokeLinecap="round" />
         </svg>
     ),
+    (
+        <svg key="icon4" className="w-10 h-10" viewBox="0 0 40 40" fill="none">
+            <path d="M20 4v8M20 28v8M4 20h8M28 20h8" stroke="#ff8c00" strokeWidth="2" strokeLinecap="round" />
+            <circle cx="20" cy="20" r="12" stroke="#ff8c00" strokeWidth="2" strokeDasharray="4 4" />
+            <path d="M16 20h8" stroke="#ff8c00" strokeWidth="2.5" strokeLinecap="round" />
+        </svg>
+    ),
+    (
+        <svg key="icon5" className="w-10 h-10" viewBox="0 0 40 40" fill="none">
+            <path d="M20 6c-4 0-10 2-10 10v6c0 6 10 12 10 12s10-6 10-12v-6c0-8-6-10-10-10z" stroke="#ff4444" strokeWidth="2" />
+            <circle cx="20" cy="18" r="3" stroke="#ff4444" strokeWidth="1.5" />
+            <path d="M20 21v4" stroke="#ff4444" strokeWidth="1.5" />
+        </svg>
+    ),
 ];
 
 export default function ProblemSection() {
@@ -50,12 +64,12 @@ export default function ProblemSection() {
                     </p>
                 </AnimatedSection>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+                <div className="flex flex-wrap justify-center gap-6 lg:gap-8">
                     {problemsData.map((problem, i) => (
                         <GlassCard
                             key={problem.title}
-                            delay={i * 0.15}
-                            className="flex flex-col items-start text-left group relative overflow-hidden"
+                            delay={i * 0.1}
+                            className="flex flex-col items-start text-left group relative overflow-hidden w-full md:w-[calc(50%-12px)] lg:w-[calc(33.33%-22px)]"
                         >
                             {/* Glow effect on hover */}
                             <div className="absolute -top-20 -right-20 w-40 h-40 bg-red-500/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

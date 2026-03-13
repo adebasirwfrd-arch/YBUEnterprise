@@ -29,6 +29,20 @@ const pillarIcons = [
             <path d="M17 11l2 3M29 34l2 3M11 31l3-2M34 15l3-2" stroke="#a78bfa" strokeWidth="1.5" strokeLinecap="round" />
         </svg>
     ),
+    (
+        <svg key="p4" className="w-12 h-12" viewBox="0 0 48 48" fill="none">
+            <path d="M10 24h28M30 16l8 8-8 8" stroke="#ff8c00" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+            <path d="M8 12c0 12 4 24 4 24" stroke="#ff8c00" strokeWidth="1.5" opacity="0.4" />
+        </svg>
+    ),
+    (
+        <svg key="p5" className="w-12 h-12" viewBox="0 0 48 48" fill="none">
+            <path d="M24 6v36M6 24h36" stroke="#00d4ff" strokeWidth="1" opacity="0.2" />
+            <path d="M24 8c-8 0-14 3-14 14v4c0 10 14 16 14 16s14-6 14-16v-4c0-11-6-14-14-14z" stroke="#00d4ff" strokeWidth="2" />
+            <rect x="20" y="18" width="8" height="6" rx="1" stroke="#00d4ff" strokeWidth="2" />
+            <path d="M21 18v-2a3 3 0 016 0v2" stroke="#00d4ff" strokeWidth="1.5" />
+        </svg>
+    ),
 ];
 
 export default function SolutionSection() {
@@ -40,6 +54,8 @@ export default function SolutionSection() {
         { color: "accent-blue", gradient: "from-accent-blue/20 to-transparent", hex: "#00d4ff" },
         { color: "accent-gold", gradient: "from-accent-gold/20 to-transparent", hex: "#e8a838" },
         { color: "purple-400", gradient: "from-purple-400/20 to-transparent", hex: "#a78bfa" },
+        { color: "accent-gold", gradient: "from-accent-gold/20 to-transparent", hex: "#e8a838" },
+        { color: "accent-blue", gradient: "from-accent-blue/20 to-transparent", hex: "#00d4ff" },
     ];
     return (
         <section id="solution" className="relative py-24 sm:py-32">
@@ -75,16 +91,16 @@ export default function SolutionSection() {
                         </motion.div>
                     </div>
 
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    <div className="flex flex-wrap justify-center gap-8">
                         {pillarsData.map((pillar, i) => (
                             <motion.div
                                 key={pillar.title}
                                 initial={{ opacity: 0, y: 40 }}
                                 whileInView={{ opacity: 1, y: 0 }}
                                 viewport={{ once: true }}
-                                transition={{ duration: 0.6, delay: i * 0.2 }}
+                                transition={{ duration: 0.6, delay: i * 0.15 }}
                                 whileHover={{ y: -6, transition: { duration: 0.3 } }}
-                                className="relative group"
+                                className="relative group w-full md:w-[calc(50%-16px)] lg:w-[calc(33.33%-22px)]"
                             >
                                 <div className={`glass rounded-2xl p-8 h-full border border-glass-border hover:border-${pillarStyles[i].color}/30 transition-all duration-300`}>
                                     {/* Gradient glow */}

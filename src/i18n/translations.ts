@@ -64,12 +64,24 @@ export const translations = {
           desc: "Tier-1 ERPs like SAP require billions in CapEx, are too rigid for field conditions, and fail completely in mining/offshore sites with limited internet connectivity.",
           stat: "Rp 2B+",
           statLabel: "Average ERP CapEx waste"
+        },
+        {
+          title: "Sync Latency (Remote Lag)",
+          desc: "Offshore and remote sites experience 30s+ data sync delays, leading to operational 'blind spots' and critical decision lag.",
+          stat: "30s+",
+          statLabel: "Avg. synchronization delay"
+        },
+        {
+          title: "Data Vulnerability",
+          desc: "Manual records and legacy unencrypted systems are vulnerable to catastrophic data leaks, cyber threats, and industrial espionage.",
+          stat: "90%",
+          statLabel: "Unencrypted legacy data"
         }
       ]
     },
     solution: {
       badge: "Our Solution",
-      titleBlue: "3-Pillar",
+      titleBlue: "Full-Stack",
       titleEnd: "Ecosystem",
       subtitle: "A hybrid \"Consult & Lock\" strategy that fixes human SOPs first, then locks compliance into our digital ecosystem.",
       pillars: [
@@ -87,6 +99,16 @@ export const translations = {
           title: "The Megaphone",
           subtitle: "B2B Podcast",
           desc: "B2B Lead Generation Channel. Organic client acquisition through thought-leadership content."
+        },
+        {
+          title: "The Speed",
+          subtitle: "Edge-Sync Engine",
+          desc: "Real-time edge computing sync optimized for 2G/Satellite. Instant data flow regardless of how remote your operations are."
+        },
+        {
+          title: "The Armor",
+          subtitle: "E2E Encryption",
+          desc: "AES-256 military-grade encryption and automated security audits. Your industrial IP is locked behind Fort Knox security."
         }
       ],
       moat: {
@@ -281,13 +303,25 @@ export const translations = {
           desc: "ERP Tier-1 seperti SAP membutuhkan miliaran CapEx, terlalu kaku untuk kondisi lapangan, dan gagal total di area tambang/lepas pantai dengan konektivitas internet terbatas.",
           stat: "Rp 2M+",
           statLabel: "Rata-rata pemborosan CapEx ERP"
+        },
+        {
+          title: "Latensi Sinkronisasi",
+          desc: "Lokasi tambang terpencil dan lepas pantai menghadapi penundaan sinkronisasi data 30 detik+, menyebabkan 'blind spots' operasional.",
+          stat: "30dtk+",
+          statLabel: "Rata-rata delay sinkronisasi"
+        },
+        {
+          title: "Kerentanan Data",
+          desc: "Catatan manual dan sistem lama yang tidak terenkripsi rentan terhadap kebocoran data katastropik, ancaman siber, dan spionase industri.",
+          stat: "90%",
+          statLabel: "Data lama tidak terenkripsi"
         }
       ]
     },
     solution: {
       badge: "Solusi Kami",
       titleBlue: "Ekosistem",
-      titleEnd: "3-Pilar",
+      titleEnd: "Full-Stack",
       subtitle: "Strategi hibrida \"Konsultasi & Kunci\" yang memperbaiki SOP manusia terlebih dahulu, lalu mengunci kepatuhan ke dalam ekosistem digital kami.",
       pillars: [
         {
@@ -304,6 +338,16 @@ export const translations = {
           title: "Megafon",
           subtitle: "Podcast B2B",
           desc: "Saluran Pembangkit Prospek B2B. Akuisisi klien organik melalui konten kepemimpinan pemikiran."
+        },
+        {
+          title: "Kecepatan",
+          subtitle: "Edge-Sync Engine",
+          desc: "Sinkronisasi edge computing yang dioptimalkan untuk 2G/Satelit. Aliran data instan tidak peduli seberapa terpencil lokasi Anda."
+        },
+        {
+          title: "Perisai",
+          subtitle: "Enkripsi E2E",
+          desc: "Enkripsi tingkat militer AES-256 dan audit keamanan otomatis. Kekayaan intelektual industri Anda terkunci dengan keamanan Fort Knox."
         }
       ],
       moat: {
