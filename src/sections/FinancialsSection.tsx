@@ -4,6 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import AnimatedSection from "@/components/AnimatedSection";
 import AnimatedCounter from "@/components/AnimatedCounter";
+import { useLanguage } from "@/context/LanguageContext";
 
 function ProgressBar({ target, label }: { target: number; label: string }) {
     const ref = useRef<HTMLDivElement>(null);
@@ -84,6 +85,39 @@ const metrics = [
 ];
 
 export default function FinancialsSection() {
+    const { t } = useLanguage();
+    const metricsData = t("financials.metrics") as any[];
+
+    const metricIcons = [
+        (
+            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        ),
+        (
+            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        ),
+        (
+            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+            </svg>
+        ),
+        (
+            <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+        ),
+    ];
+
+    const metricStyles = [
+        { value: 300000000, prefix: "Rp ", suffix: "", color: "text-accent-blue" },
+        { value: 4, prefix: "", suffix: " Klien", color: "text-green-400", hasProgress: true },
+        { value: 240, prefix: "", suffix: "%", color: "text-accent-gold" },
+        { value: 5, prefix: "", suffix: " Bulan", color: "text-purple-400" },
+    ];
+
     return (
         <section id="financials" className="relative py-24 sm:py-32">
             <div className="section-divider mb-24" />
@@ -95,20 +129,19 @@ export default function FinancialsSection() {
             <div className="relative z-10 mx-auto max-w-6xl px-6">
                 <AnimatedSection className="text-center mb-16">
                     <span className="inline-block px-4 py-1.5 rounded-full bg-accent-gold/10 border border-accent-gold/20 text-accent-gold text-sm font-medium mb-4">
-                        Unit Economics
+                        {t("financials.badge")}
                     </span>
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
                         The <span className="text-gradient-gold">Holy Grail</span>
                     </h2>
                     <p className="max-w-2xl mx-auto text-gray-400 text-lg">
-                        Investor-grade financial metrics that prove this isn&apos;t a bet —
-                        it&apos;s a calculated, low-risk wealth multiplier.
+                        {t("financials.subtitle")}
                     </p>
                 </AnimatedSection>
 
                 {/* Metrics grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
-                    {metrics.map((metric, i) => (
+                    {metricsData.map((metric, i) => (
                         <motion.div
                             key={metric.label}
                             initial={{ opacity: 0, y: 30 }}
@@ -120,22 +153,22 @@ export default function FinancialsSection() {
                             <div className="flex items-start justify-between mb-4">
                                 <div>
                                     <p className="text-sm text-gray-500 mb-1">{metric.label}</p>
-                                    <div className={`text-3xl sm:text-4xl font-bold ${metric.color}`}>
+                                    <div className={`text-3xl sm:text-4xl font-bold ${metricStyles[i].color}`}>
                                         <AnimatedCounter
-                                            target={metric.value}
-                                            prefix={metric.prefix}
-                                            suffix={metric.suffix}
-                                            duration={metric.value > 1000 ? 2500 : 1500}
+                                            target={metricStyles[i].value}
+                                            prefix={metricStyles[i].prefix}
+                                            suffix={metricStyles[i].suffix}
+                                            duration={metricStyles[i].value > 1000 ? 2500 : 1500}
                                         />
                                     </div>
                                 </div>
-                                <div className={`${metric.color} opacity-50`}>{metric.icon}</div>
+                                <div className={`${metricStyles[i].color} opacity-50`}>{metricIcons[i]}</div>
                             </div>
                             <p className="text-xs text-gray-500">{metric.sublabel}</p>
 
-                            {metric.hasProgress && (
+                            {metricStyles[i].hasProgress && (
                                 <div className="mt-4">
-                                    <ProgressBar target={4} label="Break-Even Progress" />
+                                    <ProgressBar target={4} label={metric.progress} />
                                 </div>
                             )}
                         </motion.div>
@@ -146,24 +179,24 @@ export default function FinancialsSection() {
                 <AnimatedSection delay={0.3}>
                     <div className="glass rounded-2xl p-8 text-center border border-accent-gold/20">
                         <h4 className="text-lg font-semibold text-gray-400 mb-4">
-                            LTV : CAC Ratio
+                            {t("financials.ltv.title")}
                         </h4>
                         <div className="flex items-center justify-center gap-4 mb-4">
                             <div className="text-center">
-                                <p className="text-sm text-gray-500 mb-1">LTV per Client</p>
+                                <p className="text-sm text-gray-500 mb-1">{t("financials.ltv.ltvLabel")}</p>
                                 <p className="text-2xl font-bold text-accent-gold">Rp 600M</p>
-                                <p className="text-xs text-gray-500 mt-1">5-year retention</p>
+                                <p className="text-xs text-gray-500 mt-1">{t("financials.ltv.ltvSub")}</p>
                             </div>
                             <span className="text-3xl text-gray-600">:</span>
                             <div className="text-center">
-                                <p className="text-sm text-gray-500 mb-1">CAC per Client</p>
+                                <p className="text-sm text-gray-500 mb-1">{t("financials.ltv.cacLabel")}</p>
                                 <p className="text-2xl font-bold text-accent-blue">Rp 8.8M</p>
-                                <p className="text-xs text-gray-500 mt-1">Blended cost</p>
+                                <p className="text-xs text-gray-500 mt-1">{t("financials.ltv.cacSub")}</p>
                             </div>
                         </div>
                         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-500/10 border border-green-500/30">
                             <span className="text-3xl font-bold text-green-400">68 : 1</span>
-                            <span className="text-sm text-gray-400">(Gold standard: 3:1)</span>
+                            <span className="text-sm text-gray-400">({t("financials.ltv.gold")})</span>
                         </div>
                     </div>
                 </AnimatedSection>

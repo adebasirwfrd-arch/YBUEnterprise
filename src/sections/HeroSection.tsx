@@ -1,8 +1,10 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function HeroSection() {
+    const { t } = useLanguage();
     return (
         <section
             id="hero"
@@ -44,7 +46,7 @@ export default function HeroSection() {
                     className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full border border-accent-blue/20 bg-accent-blue/5 text-accent-blue text-sm font-medium"
                 >
                     <span className="w-2 h-2 rounded-full bg-accent-blue animate-pulse" />
-                    100% Ready-to-Deploy
+                    {t("common.readyToDeploy")}
                 </motion.div>
 
                 {/* Headline */}
@@ -54,11 +56,11 @@ export default function HeroSection() {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight mb-6"
                 >
-                    <span className="text-white">Architecting</span>
+                    <span className="text-white">{t("hero.headlinePart1")}</span>
                     <br />
-                    <span className="text-gradient-hero">Digital Transformation</span>
+                    <span className="text-gradient-hero">{t("hero.headlinePart2")}</span>
                     <br />
-                    <span className="text-white">for Heavy Industries.</span>
+                    <span className="text-white">{t("hero.headlinePart3")}</span>
                 </motion.h1>
 
                 {/* Sub-headline */}
@@ -68,10 +70,10 @@ export default function HeroSection() {
                     transition={{ duration: 0.8, delay: 0.4 }}
                     className="max-w-2xl mx-auto text-lg sm:text-xl text-gray-400 mb-10 leading-relaxed"
                 >
-                    End-to-End Compliance, Digital Ecosystem, &amp; B2B Media.
+                    {t("hero.subheadline")}
                     <br className="hidden sm:block" />
                     <span className="text-accent-gold font-medium">
-                        100% Ready-to-Deploy.
+                        {t("common.readyToDeploy")}.
                     </span>
                 </motion.p>
 
@@ -85,7 +87,7 @@ export default function HeroSection() {
                         href="#problem"
                         className="inline-flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-accent-blue to-accent-blue-deep text-white font-semibold rounded-full text-lg animate-pulse-glow hover:scale-105 transition-transform duration-300"
                     >
-                        Explore The Ecosystem
+                        {t("common.exploreEcosystem")}
                         <svg
                             className="w-5 h-5 animate-bounce"
                             fill="none"
@@ -109,7 +111,7 @@ export default function HeroSection() {
                     transition={{ duration: 0.8, delay: 1 }}
                     className="mt-16 flex flex-wrap items-center justify-center gap-8 text-sm text-gray-500"
                 >
-                    {["Oil & Gas", "Mining", "Shipping", "Construction", "Fabrication"].map(
+                    {(t("hero.industries") as string[]).map(
                         (industry) => (
                             <div key={industry} className="flex items-center gap-2">
                                 <div className="w-1.5 h-1.5 rounded-full bg-accent-blue/50" />
@@ -128,7 +130,7 @@ export default function HeroSection() {
                 className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
             >
                 <span className="text-xs text-gray-600 tracking-widest uppercase">
-                    Scroll
+                    {t("common.scroll")}
                 </span>
                 <div className="w-5 h-8 rounded-full border border-gray-700 flex items-start justify-center p-1">
                     <motion.div

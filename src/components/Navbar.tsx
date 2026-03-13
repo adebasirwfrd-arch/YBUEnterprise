@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/context/LanguageContext";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const navLinks = [
     { label: "Problem", href: "#problem" },
@@ -13,8 +15,18 @@ const navLinks = [
 ];
 
 export default function Navbar() {
+    const { t } = useLanguage();
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
+
+    const navLinks = [
+        { label: t("nav.problem"), href: "#problem" },
+        { label: t("nav.solution"), href: "#solution" },
+        { label: t("nav.arsenal"), href: "#arsenal" },
+        { label: t("nav.pricing"), href: "#pricing" },
+        { label: t("nav.financials"), href: "#financials" },
+        { label: t("nav.invest"), href: "#invest" },
+    ];
 
     useEffect(() => {
         const handler = () => setScrolled(window.scrollY > 50);
@@ -58,8 +70,9 @@ export default function Navbar() {
                         href="#invest"
                         className="px-5 py-2 bg-accent-blue/10 border border-accent-blue/30 text-accent-blue rounded-full text-sm font-semibold hover:bg-accent-blue/20 transition-all duration-200"
                     >
-                        Partner With Us
+                        {t("common.partnerWithUs")}
                     </a>
+                    <LanguageSwitcher />
                 </div>
 
                 {/* Mobile hamburger */}

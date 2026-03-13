@@ -2,21 +2,19 @@
 
 import { motion } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
-
-const PRODUCT_URL = "https://basir-enterpise.vercel.app/";
-
-const modules = [
-    { name: "HSE Plan V2", status: "Production Ready", href: `${PRODUCT_URL}#solutions` },
-    { name: "CSMS Portal", status: "Production Ready", href: `${PRODUCT_URL}#solutions` },
-    { name: "EcoCompliant-OS", status: "Production Ready", href: `${PRODUCT_URL}#solutions` },
-];
-
-const techBadges = [
-    "Next.js", "Cloud Native", "Offline-First", "Real-time Sync",
-    "Mobile Ready", "REST API", "Role-Based Access", "Encrypted",
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ArsenalSection() {
+    const { t, language } = useLanguage();
+    const PRODUCT_URL = "https://basir-enterpise.vercel.app/";
+
+    const modules = [
+        { name: "HSE Plan V2", status: t("common.productionReady"), href: `${PRODUCT_URL}#solutions` },
+        { name: "CSMS Portal", status: t("common.productionReady"), href: `${PRODUCT_URL}#solutions` },
+        { name: "EcoCompliant-OS", status: t("common.productionReady"), href: `${PRODUCT_URL}#solutions` },
+    ];
+
+    const techBadges = t("arsenal.techBadges") as string[];
     return (
         <section id="arsenal" className="relative py-24 sm:py-32">
             <div className="section-divider mb-24" />
@@ -24,14 +22,13 @@ export default function ArsenalSection() {
             <div className="relative z-10 mx-auto max-w-6xl px-6">
                 <AnimatedSection className="text-center mb-16">
                     <span className="inline-block px-4 py-1.5 rounded-full bg-green-500/10 border border-green-500/20 text-green-400 text-sm font-medium mb-4">
-                        Unfair Advantage
+                        {t("arsenal.badge")}
                     </span>
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-                        The <span className="text-gradient-gold">Arsenal</span>
+                        {language === 'id' ? 'Arsenal ' : 'The '} <span className="text-gradient-gold">{language === 'id' ? 'Kami' : 'Arsenal'}</span>
                     </h2>
                     <p className="max-w-2xl mx-auto text-gray-400 text-lg">
-                        Your investment funds market penetration — not R&amp;D.
-                        All products are 100% complete and battle-tested.
+                        {t("arsenal.subtitle")}
                     </p>
                 </AnimatedSection>
 
@@ -50,17 +47,15 @@ export default function ArsenalSection() {
                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                 </svg>
                                 <span className="text-green-400 font-bold text-sm tracking-wider uppercase">
-                                    100% Development Completed
+                                    {t("arsenal.devBadge")}
                                 </span>
                             </motion.div>
 
                             <h3 className="text-2xl font-bold text-white">
-                                Zero R&amp;D Risk. Instant Time-to-Market.
+                                {t("arsenal.riskTitle")}
                             </h3>
                             <p className="text-gray-400 leading-relaxed">
-                                Designed for <span className="text-accent-blue font-medium">Offline-First Data Sync</span> in
-                                remote mining and offshore sites. Input data without internet,
-                                automatic synchronisation when connectivity returns.
+                                {t("arsenal.syncDesc")}
                             </p>
 
                             <div className="space-y-3 mt-6">
@@ -142,9 +137,9 @@ export default function ArsenalSection() {
                                     {/* Stats row */}
                                     <div className="grid grid-cols-3 gap-3">
                                         {[
-                                            { label: "Active Sites", value: "24", color: "accent-blue" },
-                                            { label: "Compliance", value: "98%", color: "green-400" },
-                                            { label: "Incidents", value: "0", color: "accent-gold" },
+                                            { label: t("arsenal.stats.activeSites"), value: "24", color: "accent-blue" },
+                                            { label: t("arsenal.stats.compliance"), value: "98%", color: "green-400" },
+                                            { label: t("arsenal.stats.incidents"), value: "0", color: "accent-gold" },
                                         ].map((stat) => (
                                             <div key={stat.label} className="p-3 rounded-lg bg-navy-800/50 border border-glass-border text-center">
                                                 <p className={`text-xl font-bold text-${stat.color}`}>{stat.value}</p>
@@ -169,10 +164,10 @@ export default function ArsenalSection() {
 
                                     {/* Table rows */}
                                     <div className="space-y-2">
-                                        {["Site Alpha - Balikpapan", "Site Bravo - Morowali", "Site Charlie - Dumai"].map((site, i) => (
+                                        {(t("arsenal.sites") as string[]).map((site, i) => (
                                             <div key={site} className="flex items-center justify-between p-2 rounded-lg bg-navy-800/30 text-xs">
                                                 <span className="text-gray-400">{site}</span>
-                                                <span className="px-2 py-0.5 rounded-full bg-green-500/10 text-green-400">Compliant</span>
+                                                <span className="px-2 py-0.5 rounded-full bg-green-500/10 text-green-400">{t("common.compliant")}</span>
                                             </div>
                                         ))}
                                     </div>
@@ -181,7 +176,7 @@ export default function ArsenalSection() {
                                 {/* Hover overlay for external link hint */}
                                 <div className="absolute inset-0 bg-accent-blue/5 opacity-0 group-hover/mockup:opacity-100 transition-opacity flex items-center justify-center">
                                     <div className="bg-navy-900/90 border border-accent-blue/30 px-4 py-2 rounded-full flex items-center gap-2 translate-y-4 group-hover/mockup:translate-y-0 transition-transform">
-                                        <span className="text-xs font-bold text-white uppercase tracking-wider">Live Demo</span>
+                                        <span className="text-xs font-bold text-white uppercase tracking-wider">{t("common.liveDemo")}</span>
                                         <svg className="w-4 h-4 text-accent-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                                         </svg>

@@ -3,26 +3,14 @@
 import { motion } from "framer-motion";
 import AnimatedSection from "@/components/AnimatedSection";
 import GlassCard from "@/components/GlassCard";
-
-const strategies = [
-    {
-        icon: "🎙️",
-        title: "Triangular Dialogue",
-        description: "SME Expert + Tech Lead + Female Co-Host (Audience Proxy). Three perspectives, one compelling narrative.",
-    },
-    {
-        icon: "🎯",
-        title: "Thought Leadership",
-        description: "Position our SMEs as industry authorities. Every episode is a trust-building asset that attracts decision-makers.",
-    },
-    {
-        icon: "💰",
-        title: "Micro-Content Ads",
-        description: "Repurpose long-form into bite-sized LinkedIn, Instagram, and TikTok content. Maximum reach, minimal spend.",
-    },
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function PodcastSection() {
+    const { t } = useLanguage();
+    const strategiesData = t("podcast.strategies") as any[];
+
+    // Original static icons for strategies
+    const strategyIcons = ["🎙️", "🎯", "💰"];
     return (
         <section id="podcast" className="relative py-24 sm:py-32">
             <div className="section-divider mb-24" />
@@ -30,14 +18,13 @@ export default function PodcastSection() {
             <div className="relative z-10 mx-auto max-w-6xl px-6">
                 <AnimatedSection className="text-center mb-16">
                     <span className="inline-block px-4 py-1.5 rounded-full bg-purple-500/10 border border-purple-500/20 text-purple-400 text-sm font-medium mb-4">
-                        Growth Engine
+                        {t("podcast.badge")}
                     </span>
                     <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-                        Why We <span className="text-purple-400">Don&apos;t</span> Do Cold Calls
+                        {t("podcast.title").split("Don't")[0]} <span className="text-purple-400">Don&apos;t</span> {t("podcast.title").split("Don't")[1]}
                     </h2>
                     <p className="max-w-2xl mx-auto text-gray-400 text-lg">
-                        Our lean marketing engine attracts decision-makers organically
-                        through B2B thought-leadership content.
+                        {t("podcast.subtitle")}
                     </p>
                 </AnimatedSection>
 
@@ -71,26 +58,26 @@ export default function PodcastSection() {
                                 </div>
 
                                 <h3 className="text-xl font-bold text-white mb-2">
-                                    Industry Insider Podcast
+                                    {t("podcast.visualTitle")}
                                 </h3>
                                 <p className="text-gray-400 text-sm">
-                                    Live conversations with industry leaders
+                                    {t("podcast.visualSub")}
                                 </p>
 
                                 {/* Cost savings highlight */}
                                 <div className="mt-6 p-4 rounded-xl bg-purple-500/10 border border-purple-500/20">
                                     <div className="flex items-center justify-between mb-2">
-                                        <span className="text-sm text-gray-400">Studio Rental</span>
+                                        <span className="text-sm text-gray-400">{t("podcast.costStudio")}</span>
                                         <span className="text-sm text-gray-500 line-through">Rp 50M/yr</span>
                                     </div>
                                     <div className="flex items-center justify-between mb-3">
-                                        <span className="text-sm text-gray-400">Our Setup</span>
+                                        <span className="text-sm text-gray-400">{t("podcast.costOur")}</span>
                                         <span className="text-sm text-purple-400 font-bold">Rp 10M/yr</span>
                                     </div>
                                     <div className="h-px bg-glass-border mb-3" />
                                     <div className="flex items-center justify-center gap-2">
                                         <span className="text-2xl font-bold text-purple-400">80%</span>
-                                        <span className="text-sm text-gray-400">CapEx Saved</span>
+                                        <span className="text-sm text-gray-400">{t("podcast.capexSaved")}</span>
                                     </div>
                                 </div>
                             </div>
@@ -99,15 +86,15 @@ export default function PodcastSection() {
 
                     {/* Right: Strategy cards */}
                     <div className="lg:col-span-3 space-y-4">
-                        {strategies.map((strategy, i) => (
+                        {strategiesData.map((strategy, i) => (
                             <GlassCard key={strategy.title} delay={i * 0.15} className="flex items-start gap-4">
-                                <span className="text-3xl">{strategy.icon}</span>
+                                <span className="text-3xl">{strategyIcons[i]}</span>
                                 <div>
                                     <h4 className="text-lg font-bold text-white mb-1">
                                         {strategy.title}
                                     </h4>
                                     <p className="text-gray-400 text-sm leading-relaxed">
-                                        {strategy.description}
+                                        {strategy.desc}
                                     </p>
                                 </div>
                             </GlassCard>
